@@ -15,7 +15,6 @@ import {
   TrendingUp, 
   Lock,
   ExternalLink,
-  QrCode,
   Radio,
   FileCheck
 } from 'lucide-react';

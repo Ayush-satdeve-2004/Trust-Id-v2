@@ -44,7 +44,6 @@ export const CustomerVerificationForm: React.FC<CustomerVerificationFormProps> =
           delivery_address: data.trustId.order_meta.delivery_address,
           form_token: token || data.trustId.otp_meta.form_token,
           is_verified: data.trustId.otp_meta.verified,
-          otp_hint: data.trustId.otp_meta.otp_code, // For review convenience
         });
         if (data.trustId.otp_meta.verified) {
           setVerifiedRecord(data.trustId);

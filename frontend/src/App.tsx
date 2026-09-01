@@ -204,10 +204,6 @@ export const App: React.FC = () => {
             }}
             onOpenEmails={() => setIsEmailsOpen(true)}
             onOpenSimulation={() => setIsSimulationOpen(true)}
-            currentMode="console"
-            onToggleCustomerForm={() => {
-              window.location.href = `/verify?trustId=${selectedTrustId || merchants[0]?.users[0]?.trust_ids[0]?.trust_id || ''}`;
-            }}
           />
 
           <Breadcrumbs

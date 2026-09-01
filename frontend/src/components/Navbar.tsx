@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Bell, Sparkles, Terminal, Mail, Server, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Bell, Terminal, Mail, Server } from 'lucide-react';
 import { AlertItem } from '../types';
 
 interface NavbarProps {
@@ -8,18 +8,14 @@ interface NavbarProps {
   onOpenAlerts: () => void;
   onOpenEmails: () => void;
   onOpenSimulation: () => void;
-  currentMode: 'console' | 'customer_form';
-  onToggleCustomerForm: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  alerts,
+  alerts: _alerts,
   unreadAlertCount,
   onOpenAlerts,
   onOpenEmails,
   onOpenSimulation,
-  currentMode,
-  onToggleCustomerForm,
 }) => {
   return (
     <header className="bg-[#0C2340] border-b border-slate-700/60 sticky top-0 z-40 text-white shadow-md">
