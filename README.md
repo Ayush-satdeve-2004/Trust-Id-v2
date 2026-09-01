@@ -27,18 +27,18 @@ Layer B — Hidden: Silent Autonomous AI Backend
 
 ## 🚀 Getting Started
 
-### 1. Run Development Server
+### 1. Run Unified Server
 ```bash
-npm run dev
+npm start
 ```
-- **Backend API & WebSocket Server**: `http://localhost:4000`
-- **Razorpay Trust Console Frontend**: `http://localhost:3000`
+- **Unified Web Console & API & WebSockets**: `http://localhost:3000`
+- **Dedicated Customer Verification Webpage**: `http://localhost:3000/verify`
 
 ### 2. Run Automated Test Suite
 ```bash
 npm test
 ```
-Executes all 27 unit & integration tests validating fingerprinting, deduplication, two-email geofence dispatcher, CV comparator, penalty matrices, and ISO/IEC dispute dossier PDF generation.
+Executes all 28 unit & integration tests validating fingerprinting, deduplication, two-email geofence dispatcher, CV comparator, 0 baseline +/-1 point scoring matrices, and ISO/IEC dispute dossier PDF generation.
 
 ---
 
@@ -54,13 +54,14 @@ Executes all 27 unit & integration tests validating fingerprinting, deduplicatio
    - Real-time color state transitions (`Grey` -> `Amber` -> `Green`).
 4. **Two-Email Doorstep Verification Flow (Section 7)**:
    - **Email 1**: OTP only, dispatched when courier enters ≈800m geofence (valid 20m).
-   - **Email 2**: Secure single-use link to 3-option form (`Option A — Same`, `Option B — Different`, `Option C — Mismatch`).
+   - **Email 2**: Secure single-use link to 3-option form (`http://localhost:3000/verify?token=...&trustId=...`).
    - Server-side OTP validation with retry limits and automated strike logging.
 5. **Warning System & Non-Delivery Liability (Section 8)**:
-   - Section 8.1: First offense = formal warning (-5 pts); repeat offense = blacklisted & score 0.
-   - Section 8.2: 0 telemetry expiry defaults fault to merchant non-delivery.
-6. **Section 9 Trust Score & Penalty Matrix**:
-   - Clean deliveries award +2 pts.
-   - Bait-and-switch deducts -15 pts + 100% forward & return shipping liability + 30-day payout hold on repeats.
+   - Section 8.1: First offense = formal warning (-1 pt); repeat offense = blacklisted & score -2 pts.
+   - Section 8.2: 0 telemetry expiry defaults fault to merchant non-delivery (-1 pt).
+6. **Section 9 Point System**:
+   - Baseline 0 points for all new merchants and customers.
+   - Increments increase score by +1 pt.
+   - Decrements decrease score by -1 pt.
 7. **Final ISO/IEC Dispute Dossier PDF (Section 13)**:
    - Auto-generated upon 8 steps completion; re-exportable during the 120-day Bank Evidence Vault window.
