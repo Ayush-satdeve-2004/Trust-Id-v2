@@ -206,7 +206,8 @@ app.post('/api/webhooks/courier-gps', (req: Request, res: Response) => {
       return res.status(400).json({ success: false, error: 'trust_id is required' });
     }
 
-    const result = store.triggerGeofenceEntry(trust_id, lat || 12.9718, lng || 77.5948);
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const result = store.triggerGeofenceEntry(trust_id, lat || 12.9718, lng || 77.5948, baseUrl);
     res.json({
       success: true,
       trustId: result.trustId,
@@ -289,7 +290,8 @@ app.post('/api/simulation/auto-flow', async (req: Request, res: Response) => {
     }
 
     // Step 1: Trigger Geofence GPS (~800m)
-    const geofenceRes = store.triggerGeofenceEntry(trust_id);
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const geofenceRes = store.triggerGeofenceEntry(trust_id, 12.9718, 77.5948, baseUrl);
 
     // Step 2: Auto-verify with selected outcome (or default A_SAME)
     const targetOutcome = outcome || 'A_SAME';

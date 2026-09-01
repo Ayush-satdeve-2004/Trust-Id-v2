@@ -769,7 +769,8 @@ class TrustStore {
   public triggerGeofenceEntry(
     trustIdStr: string,
     currentLat: number = 12.9718,
-    currentLng: number = 77.5948
+    currentLng: number = 77.5948,
+    baseUrl?: string
   ): { trustId: TrustID; email1: any; email2: any } {
     const { merchant, user, trustId } = this.findTrustId(trustIdStr);
     if (!trustId || !merchant || !user) throw new Error(`Trust-ID ${trustIdStr} not found`);
@@ -790,7 +791,8 @@ class TrustStore {
       user.user_id,
       trustId.trust_id,
       trustId.order_meta.order_id,
-      merchant.business_name
+      merchant.business_name,
+      baseUrl
     );
 
     trustId.otp_meta.otp_code = dispatchResult.otp;

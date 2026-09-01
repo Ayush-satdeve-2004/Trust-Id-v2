@@ -66,7 +66,7 @@ export class GeofenceEmailDispatcher {
     trustId: string,
     orderId: string,
     merchantName: string,
-    baseUrl: string = 'http://localhost:3000'
+    baseUrl: string = process.env.APP_BASE_URL || 'http://localhost:3000'
   ): {
     otp: string;
     formToken: string;
