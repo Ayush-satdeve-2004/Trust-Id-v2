@@ -5,6 +5,13 @@ Complete implementation of the **Trust-ID Engine Version 2.0** specification, fe
 
 ---
 
+## 🌐 Live Production Deployment (Render)
+
+- **Live Public App & WebSockets**: [https://trust-id-v2.onrender.com](https://trust-id-v2.onrender.com)
+- **Live Customer Verification Webpage**: [https://trust-id-v2.onrender.com/verify](https://trust-id-v2.onrender.com/verify)
+
+---
+
 ## 🏛️ Architecture
 
 ```
@@ -25,14 +32,14 @@ Layer B — Hidden: Silent Autonomous AI Backend
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Local Development
 
 ### 1. Run Unified Server
 ```bash
 npm start
 ```
-- **Unified Web Console & API & WebSockets**: `http://localhost:3000`
-- **Dedicated Customer Verification Webpage**: `http://localhost:3000/verify`
+- **Local Web Console & API & WebSockets**: `http://localhost:3000`
+- **Local Customer Verification Webpage**: `http://localhost:3000/verify`
 
 ### 2. Run Automated Test Suite
 ```bash
@@ -54,7 +61,7 @@ Executes all 28 unit & integration tests validating fingerprinting, deduplicatio
    - Real-time color state transitions (`Grey` -> `Amber` -> `Green`).
 4. **Two-Email Doorstep Verification Flow (Section 7)**:
    - **Email 1**: OTP only, dispatched when courier enters ≈800m geofence (valid 20m).
-   - **Email 2**: Secure single-use link to 3-option form (`http://localhost:3000/verify?token=...&trustId=...`).
+   - **Email 2**: Secure single-use link to 3-option form (`https://trust-id-v2.onrender.com/verify?token=...&trustId=...`).
    - Server-side OTP validation with retry limits and automated strike logging.
 5. **Warning System & Non-Delivery Liability (Section 8)**:
    - Section 8.1: First offense = formal warning (-1 pt); repeat offense = blacklisted & score -2 pts.
